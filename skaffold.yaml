@@ -22,5 +22,9 @@ build:
             strip: target/classes/
 deploy:
   kustomize:
-    paths:
-      - "src/k8s/demo/"
+    paths: ["kustomize/base"]
+profiles:
+  - name: qa
+    deploy:
+      kustomize:
+        paths: ["kustomize/qa"]
